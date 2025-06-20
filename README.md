@@ -1,16 +1,12 @@
-# personal_vocabulary_builder
+# 📚 Personal Vocabulary Builder
 
-A new Flutter project.
+A Flutter app to help you grow your English vocabulary.
 
-## Getting Started
+- 🔍 Search any English word
+- 📖 View definitions, examples, and synonyms
+- 💾 Save words locally using Hive
+- 📜 Scrollable word details view
+- 🔊 (Optional) Hear word pronunciation audio
+- 🕶️ Clean UI with dark mode support
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Great for students, language learners, and anyone looking to enhance their vocabulary daily.
