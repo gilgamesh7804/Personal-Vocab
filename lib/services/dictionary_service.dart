@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:personal_vocabulary_builder/models/models.dart';
+import '../models/models.dart';
 
 Future<SavedWord?> fetchWordData(String word) async {
   final url =
       'https://api.dictionaryapi.dev/api/v2/entries/en/${word.toLowerCase()}';
-
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode != 200) {
@@ -14,8 +13,15 @@ Future<SavedWord?> fetchWordData(String word) async {
   }
 
   final data = jsonDecode(response.body);
-
   if (data == null || data.isEmpty) return null;
+
+  String? audioUrl;
+  for (var phonetic in data[0]['phonetics']) {
+    if (phonetic['audio'] != null && phonetic['audio'].toString().isNotEmpty) {
+      audioUrl = phonetic['audio'];
+      break;
+    }
+  }
 
   List<Meaning> meanings = [];
 
@@ -42,5 +48,5 @@ Future<SavedWord?> fetchWordData(String word) async {
     meanings.add(Meaning(partOfSpeech: partOfSpeech, definitions: definitions));
   }
 
-  return SavedWord(word: word, meanings: meanings);
+  return SavedWord(word: word, meanings: meanings, audioUrl: audioUrl);
 }

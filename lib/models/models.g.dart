@@ -19,17 +19,20 @@ class SavedWordAdapter extends TypeAdapter<SavedWord> {
     return SavedWord(
       word: fields[0] as String,
       meanings: (fields[1] as List).cast<Meaning>(),
+      audioUrl: fields[2] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, SavedWord obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.word)
       ..writeByte(1)
-      ..write(obj.meanings);
+      ..write(obj.meanings)
+      ..writeByte(2)
+      ..write(obj.audioUrl);
   }
 
   @override

@@ -1,38 +1,42 @@
 import 'package:hive/hive.dart';
+
 part 'models.g.dart';
 
 @HiveType(typeId: 0)
 class SavedWord extends HiveObject {
   @HiveField(0)
-  String word;
+  final String word;
 
   @HiveField(1)
-  List<Meaning> meanings;
+  final List<Meaning> meanings;
 
-  SavedWord({required this.word, required this.meanings});
+  @HiveField(2)
+  final String? audioUrl;
+
+  SavedWord({required this.word, required this.meanings, this.audioUrl});
 }
 
 @HiveType(typeId: 1)
-class Meaning extends HiveObject {
+class Meaning {
   @HiveField(0)
-  String partOfSpeech;
+  final String partOfSpeech;
 
   @HiveField(1)
-  List<Definition> definitions;
+  final List<Definition> definitions;
 
   Meaning({required this.partOfSpeech, required this.definitions});
 }
 
 @HiveType(typeId: 2)
-class Definition extends HiveObject {
+class Definition {
   @HiveField(0)
-  String definition;
+  final String definition;
 
   @HiveField(1)
-  String? example;
+  final String? example;
 
   @HiveField(2)
-  List<String>? synonyms;
+  final List<String>? synonyms;
 
   Definition({required this.definition, this.example, this.synonyms});
 }

@@ -15,6 +15,8 @@ dependencies:
   hive_flutter: ^1.1.0
   path_provider: ^2.1.2
   cupertino_icons: ^1.0.8
+  audioplayers: ^5.2.1
+
 
 dev_dependencies:
   flutter_test:

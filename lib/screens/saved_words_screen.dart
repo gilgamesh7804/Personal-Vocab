@@ -28,8 +28,7 @@ class SavedWordsScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: WordDetailWidget(
                       word: word,
-                      onSave:
-                          () {}, // Provide an empty callback or your desired function
+                      onSave: () {}, // No saving needed here
                     ),
                   ),
                 ),

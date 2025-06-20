@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 import '../models/models.dart';
 
 class WordDetailWidget extends StatelessWidget {
@@ -11,6 +12,22 @@ class WordDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        if (word.audioUrl != null && word.audioUrl!.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Row(
+              children: [
+                const Text('Pronunciation:'),
+                IconButton(
+                  icon: const Icon(Icons.volume_up),
+                  onPressed: () async {
+                    final player = AudioPlayer();
+                    await player.play(UrlSource(word.audioUrl!));
+                  },
+                ),
+              ],
+            ),
+          ),
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
